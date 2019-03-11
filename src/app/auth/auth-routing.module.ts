@@ -2,20 +2,24 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AnonymousGuardGuard } from '../anonymous-guard.guard';
 
 const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [AnonymousGuardGuard]
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate: [AnonymousGuardGuard]
   },
   {
     path: '**',
-    redirectTo: 'register',
-    pathMatch: 'full'
+    redirectTo: 'login',
+    pathMatch: 'full',
+    canActivate: [AnonymousGuardGuard]
   },
 ];
 

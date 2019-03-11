@@ -3,24 +3,29 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserAddEditComponent } from './user-add-edit/user-add-edit.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
   {
     path: 'user-dashboard',
-    component: UserDashboardComponent
+    component: UserDashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'user-add-edit',
-    component: UserAddEditComponent
+    component: UserAddEditComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'user-list',
-    component: UserListComponent
+    component: UserListComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
-    redirectTo: 'user-list',
-    pathMatch: 'full'
+    redirectTo: 'user-dashboard',
+    pathMatch: 'full',
+    canActivate: [AuthGuard]
   },
 ];
 
