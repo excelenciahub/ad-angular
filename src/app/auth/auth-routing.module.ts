@@ -3,21 +3,22 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AnonymousGuardGuard } from '../anonymous-guard.guard';
+import { GlobalConstants } from '../common/model/global-constants';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: GlobalConstants.Routes.login,
     component: LoginComponent,
     canActivate: [AnonymousGuardGuard]
   },
   {
-    path: 'register',
+    path: GlobalConstants.Routes.register,
     component: RegisterComponent,
     canActivate: [AnonymousGuardGuard]
   },
   {
     path: '**',
-    redirectTo: 'login',
+    redirectTo: GlobalConstants.Routes.login,
     pathMatch: 'full',
     canActivate: [AnonymousGuardGuard]
   },

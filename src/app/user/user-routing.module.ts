@@ -4,26 +4,27 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserAddEditComponent } from './user-add-edit/user-add-edit.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { AuthGuard } from '../auth.guard';
+import { GlobalConstants } from '../common/model/global-constants';
 
 const routes: Routes = [
   {
-    path: 'user-dashboard',
+    path: GlobalConstants.Routes.UserDashboard,
     component: UserDashboardComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'user-add-edit',
+    path: GlobalConstants.Routes.UserAddEdit,
     component: UserAddEditComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'user-list',
+    path: GlobalConstants.Routes.UserList,
     component: UserListComponent,
     canActivate: [AuthGuard]
   },
   {
     path: '**',
-    redirectTo: 'user-dashboard',
+    redirectTo: GlobalConstants.Routes.UserDashboard,
     pathMatch: 'full',
     canActivate: [AuthGuard]
   },

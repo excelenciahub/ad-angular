@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { GlobalConstants } from 'src/app/common/model/global-constants';
 import { CustomCookieService } from 'src/app/common/service/cookie.service';
 import { HttpService } from 'src/app/common/service/http.service';
@@ -8,6 +8,9 @@ import { LoginModel, UserModel } from '../models/user.model';
 
 @Injectable()
 export class AuthService {
+
+    private showLoginNotification = new Subject<any>();
+    showLoginNotificationUiObservable$ = this.showLoginNotification.asObservable();
 
     constructor(
         private router: Router,
@@ -42,4 +45,7 @@ export class AuthService {
         return this.httpService.post<Response>(GlobalConstants.ApiPath.Auth.Login, user);
     }
 
+    setIsLoggedInValue(val) {
+        this.showLoginNotification.next(val);
+    }
 }

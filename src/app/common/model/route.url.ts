@@ -3,5 +3,7 @@ export const Routes = {
     user: 'user',
     login: 'login',
     register: 'register',
-    UserDashboard: 'user-dashboard'
+    UserDashboard: 'user-dashboard',
+    UserAddEdit: 'user-add-edit',
+    UserList: 'user-list',
 };

@@ -94,6 +94,7 @@ export class RegisterComponent {
         let expirationHours = 720;
         expirationHours = (1 * expirationHours) / 24;
 
+        this.authService.setIsLoggedInValue(true);
         this.authService.saveToken(response.token, expirationHours);
         this.isLoading = false;
         this.hasError = false;

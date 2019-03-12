@@ -12,16 +12,23 @@ export class HeaderComponent implements OnInit {
 
   subscription: Subscription;
 
-  @Input() isLoggedIn: boolean;
+  isLoggedIn = false;
 
   constructor(
     private router: Router,
     private authService: AuthService
-  ) { }
+  ) {
+    this.isLoggedIn = this.authService.isLoggedIn;
+  }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.authService.showLoginNotificationUiObservable$.subscribe((val) => {
+      this.isLoggedIn = val;
+    });
+  }
 
   signOut() {
+    this.authService.setIsLoggedInValue(false);
     this.authService.signOut();
   }
 

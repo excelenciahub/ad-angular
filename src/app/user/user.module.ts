@@ -1,13 +1,8 @@
 import { NgModule } from '@angular/core';
-import { UserRoutingModule } from './user-routing.module';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserAddEditComponent } from './user-add-edit/user-add-edit.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { AuthService } from '../auth/services/auth.service';
-import { CustomCookieService } from '../common/service/cookie.service';
-import { CookieService } from 'ngx-cookie-service';
-import { HttpService } from '../common/service/http.service';
-
+import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,12 +13,7 @@ import { HttpService } from '../common/service/http.service';
   imports: [
     UserRoutingModule
   ],
-  providers: [
-    AuthService,
-    CustomCookieService,
-    CookieService,
-    HttpService
-  ],
+  providers: [],
   bootstrap: []
 })
 export class UserModule { }

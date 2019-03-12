@@ -58,9 +58,12 @@ export class LoginComponent {
     this.SubmitSubscribe = this.authService.login(loginFormData)
       .subscribe((response: ResponseModel) => {
 
+        this.authService.setIsLoggedInValue(true);
+
         this.isFormSubmitted = false;
         let expirationHours = 720;
         expirationHours = (1 * expirationHours) / 24;
+
 
         this.authService.saveToken(response.token, expirationHours);
         this.isLoading = false;
