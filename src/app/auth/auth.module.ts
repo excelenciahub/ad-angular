@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +19,9 @@ import { RegisterComponent } from './register/register.component';
     ReactiveFormsModule,
     NgDatepickerModule
   ],
-  providers: [],
+  providers: [
+    DatePipe
+  ],
   bootstrap: []
 })
 export class AuthModule { }
